@@ -46,6 +46,8 @@ VecRect RectLoader::load()
 void RectLoader::SortHeight(VecRect & inputVecRect)
 {
     // Comparing height and width of each rectangle. If width is bigger than heidth, the recatngle will be rotated.
+
+    //test
     for (int i = 0; i < inputVecRect.size(); i++) {            
 
         float Controler = std::max(inputVecRect.at(i).m_Height, inputVecRect.at(i).m_Width);
