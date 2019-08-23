@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+
+
 struct Rect
 {
     float m_Hight{};
@@ -11,7 +13,7 @@ struct Rect
     int m_Index{};
 };
 
-
+typedef std::vector<Rect> VecRect;
 
 class RectLoader
 {
@@ -22,6 +24,6 @@ public:
     RectLoader(const std::string& filePath) ;
     virtual ~RectLoader() ;
     std::string getPath() const { return *m_Path; }
-    std::vector<Rect> load();
+    VecRect load();
 };
 
