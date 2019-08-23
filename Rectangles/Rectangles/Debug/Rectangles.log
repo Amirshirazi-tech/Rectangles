@@ -1,2 +1,3 @@
 ﻿  RectLoader.cpp
+c:\users\amir\documents\github\-rectangles\rectangles\rectangles\rectloader.cpp(49): warning C4018: '<': signed/unsigned mismatch
   Rectangles.vcxproj -> C:\Users\amir\Documents\GitHub\-Rectangles\Rectangles\Debug\Rectangles.exe

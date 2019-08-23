@@ -29,7 +29,7 @@ VecRect RectLoader::load()
            getline(rectFile, line);     
            std::stringstream rectBuffer (line);
            Rect tmpRect;
-           rectBuffer >> tmpRect.m_Index >> tmpRect.m_Hight >> tmpRect.m_Width;
+           rectBuffer >> tmpRect.m_Index >> tmpRect.m_Height >> tmpRect.m_Width;
            vCollecRect.push_back(tmpRect);
         }
      rectFile.close();
@@ -41,4 +41,26 @@ VecRect RectLoader::load()
    }
      
    return vCollecRect;
+}
+
+void RectLoader::SortHeight(VecRect & inputVecRect)
+{
+    // Comparing height and width of each rectangle. If width is bigger than heidth, the recatngle will be rotated.
+    for (int i = 0; i < inputVecRect.size(); i++) {            
+
+        float Controler = std::max(inputVecRect.at(i).m_Height, inputVecRect.at(i).m_Width);
+        if (Controler == inputVecRect.at(i).m_Width) {
+            rotateRect(inputVecRect.at(i));
+        }
+    }
+    std::sort(inputVecRect.begin(), inputVecRect.end(), [](const Rect & lhs, const Rect& rhs) {
+        return lhs.m_Height > rhs.m_Height;
+    });
+}
+
+void rotateRect(Rect& rectangle)
+{
+    float temp = rectangle.m_Width;
+    rectangle.m_Width = rectangle.m_Height;
+    rectangle.m_Height = temp;
 }
