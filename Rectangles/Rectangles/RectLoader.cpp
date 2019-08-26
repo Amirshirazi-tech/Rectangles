@@ -30,6 +30,7 @@ VecRect RectLoader::load()
            std::stringstream rectBuffer (line);
            Rect tmpRect;
            rectBuffer >> tmpRect.m_Index >> tmpRect.m_Height >> tmpRect.m_Width;
+
            vCollecRect.push_back(tmpRect);
         }
      rectFile.close();
@@ -42,6 +43,7 @@ VecRect RectLoader::load()
      
    return vCollecRect;
 }
+
 
 void RectLoader::SortHeight(VecRect & inputVecRect)
 {
@@ -57,6 +59,14 @@ void RectLoader::SortHeight(VecRect & inputVecRect)
         return lhs.m_Height > rhs.m_Height;
     });
 }
+
+//Rect gapFinder(const Rect obj)
+//{
+//    const float gapHeight{};
+//    if (obj.m_Width < gapHeight) {
+//        return  obj;
+//    }
+//}
 
 void rotateRect(Rect& rectangle)
 {
