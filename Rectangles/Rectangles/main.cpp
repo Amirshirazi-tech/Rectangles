@@ -10,7 +10,7 @@ int main() {
     std::string inputPath;
     std::cout << "Please enter the input file: ";
     std::getline(std::cin, inputPath);
-    RectLoader TRect("rectangles");
+    RectLoader TRect(inputPath);
 
     VecRect VecLoadRect = TRect.load();
     TRect.SortHeight(VecLoadRect);
