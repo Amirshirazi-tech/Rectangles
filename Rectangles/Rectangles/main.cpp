@@ -10,7 +10,7 @@ int main() {
     std::string inputPath;
     std::cout << "Please enter the input file: ";
     std::getline(std::cin, inputPath);
-    RectLoader TRect(inputPath);
+    RectLoader TRect("rectangles");
 
     VecRect VecLoadRect = TRect.load();
     TRect.SortHeight(VecLoadRect);
@@ -19,25 +19,28 @@ int main() {
     VecCollect.push_back(square);
 
     for (int i = 1; i < VecLoadRect.size(); i++) {
-        VecLoadRect.at(i).m_bottomLeftX = VecLoadRect.at(i - 1).m_bottomLeftX + VecLoadRect.at(i - 1).m_Width;
-        VecLoadRect.at(i).m_bottomLeftY = 0;
-         
-        if ( VecLoadRect.at(i).m_unUsedFlag == true) {
-            float gapHeight = VecLoadRect.at(i-1).m_Height - VecLoadRect.at(i).m_Height;
+
+        if (VecLoadRect.at(i).m_unUsedFlag == true) {
+            VecLoadRect.at(i).m_bottomLeftX = VecLoadRect.at(i - 1).m_bottomLeftX + VecLoadRect.at(i - 1).m_Width;
+            VecLoadRect.at(i).m_bottomLeftY = 0;
+            float gapHeight = VecLoadRect.at(0).m_Height - VecLoadRect.at(i).m_Height;
             VecCollect.push_back(VecLoadRect.at(i));
-
+            float gapWidth = gapHeight;
+            float height{};
             for (int j = 0; j < VecLoadRect.size(); j++) {
-                float gapWidth = VecLoadRect.at(i - 1).m_Height - VecLoadRect.at(i).m_Width;
-                if (VecLoadRect.at(j).m_Width < gapHeight and VecLoadRect.at(j).m_Width < gapWidth and VecLoadRect.at(j).m_unUsedFlag == true) {
-                
-                    rotateRect(VecLoadRect.at(j));
+                if (VecLoadRect.at(j).m_Width < gapHeight and VecLoadRect.at(j).m_Height <= VecLoadRect.at(i).m_Width and VecLoadRect.at(j).m_unUsedFlag == true) {
+                    
+                    if (VecLoadRect.at(j).m_Width < gapWidth) {
 
-                    VecLoadRect.at(j).m_bottomLeftX = VecLoadRect.at(i).m_bottomLeftX;
-                      
-                    VecLoadRect.at(j).m_bottomLeftY = VecLoadRect.at(i-1).m_bottomLeftY + VecLoadRect.at(j - 1).m_Height + VecLoadRect.at(i).m_Height;
-                    VecLoadRect.at(j).m_unUsedFlag = false;
-                    VecCollect.push_back(VecLoadRect.at(j));
+                        rotateRect(VecLoadRect.at(j));
 
+                        VecLoadRect.at(j).m_bottomLeftX = VecLoadRect.at(i).m_bottomLeftX;                        
+                        VecLoadRect.at(j).m_bottomLeftY = height + VecLoadRect.at(i).m_Height;
+                        VecLoadRect.at(j).m_unUsedFlag = false;
+                        VecCollect.push_back(VecLoadRect.at(j));
+                        gapWidth -= VecLoadRect.at(j).m_Height;
+                        height += VecLoadRect.at(j).m_Height;
+                    }
                 }
             }
 
