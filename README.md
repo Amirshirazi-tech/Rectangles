@@ -1,7 +1,7 @@
 #  Rectangles
 Amir Shirazi developed this project. In this project, an algorithm was developed to collect several rectangles and place them in a square with a minimum area size.
 
-This program is a console application and receive the input file and show the result in the console. In the directory of the project, there is a sample including 10 rectangles. 
+This program is a console application and receive the input file (*txt) and show the result in the console. In the directory of the project, there is a sample including 10 rectangles. 
 
 The output includes the position of each rectangle based on their origin, the index number of each rectangle, and the size of the area of the optimum square.
 
