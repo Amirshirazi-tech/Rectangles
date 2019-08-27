@@ -12,11 +12,7 @@ The output includes the position of each rectangle based on their origin, the in
 
 3. The first rectangles are used as a reference. Then the second one is placed in the next to the reference. The bottom left corner of each rectangle is used as an origin to place them into the square.
 
-4. For the third one, the space on the top of the second one respect to the reference one is checked. It means the difference between the height of the reference and the second rectangle is calculated. Then the program tries to find which rectangle has enough width, which can fit in this space. This rectangle will be rotated 90 degrees again and placed in this empty place.
-
-The critical point for this selection is the width of the selected rectangle (after rotation) must not be larger than the width of the second rectangle.
-
-Then the space on the top of the third rectangle is checked. This process will continue until the end of the vector.
+4. For the third one, the space on the top of the second one respect to the reference one is checked. It means the difference between the height of the reference and the second rectangle is calculated. Then the program tries to find which rectangle has enough width, which can fit in this space. This rectangle will be rotated 90 degrees again and placed in this empty place. The critical point for this selection is the width of the selected rectangle (after rotation) must not be larger than the width of the second rectangle. Then the space on the top of the third rectangle is checked. This process will continue until the end of the vector.
 
 5. In each step, the coordinate (x,y) of the origin of each rectangle is calculated.
 
